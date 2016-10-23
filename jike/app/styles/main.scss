@@ -1,0 +1,144 @@
+$bg-color: #fff;
+$float-l: left;
+$float-R: right;
+$center: center;
+$padding-T: 15px;
+$margin-T: 10px;
+$block: block;
+$list-style: none;
+@mixin p-magin {
+  margin: 0;
+  padding: 0;
+}
+@mixin color($color:#547834) {
+  color: $color;
+}
+@mixin font($font-size:12px,$font-weight:600) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+}
+@mixin width($width:500px,$height:335px) {
+  width: $width;
+  height: $height;
+}
+@mixin container($background:#f0f0f0,$margin:auto) {
+  background: $background;
+  margin: $margin;
+}
+@mixin padding($padding:10px 10px 10px 10px) {
+  padding: $padding;
+}
+@mixin border($dir:left,$width:1px,$line:solid,$color:#c1c1c1) {
+  border-#{$dir}: $width $line $color;
+}
+
+.clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    zoom: 1;
+  }
+}
+
+* {
+  @include p-magin;
+}
+
+.contain {
+  @include container;
+  @include width;
+  margin-top: $margin-T;
+
+  .time {
+    @include font(16px,0);
+    display: $block;
+    @include padding;
+  }
+}
+
+.header {
+  padding-top: $padding-T;
+
+  .header-L {
+    $bg-color: red;
+    background: $bg-color;
+    @include width(200px,80px);
+    float: $float-l;
+    @include font(60px);
+    @include color(#fff);
+    text-align: $center;
+  }
+
+  .header-R {
+    float: $float-l;
+    @include width(270px,80px);
+    text-align: $center;
+
+    dl {
+      @include color;
+
+      dt {
+        @include font(18px);
+      }
+
+      dd {
+        @include font(13px,0);
+      }
+    }
+
+    P {
+      @include color(#FF0000);
+      @include font(18px);
+      padding-top: $padding-T;
+      text-align: $center;
+    }
+  }
+}
+
+.route {
+  $bg-color: #216d2d;
+  background: $bg-color;
+
+  ul {
+    &:after {
+      content: ".";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+      zoom: 1;
+    }
+
+    li {
+      @include width(27px,150px);
+      list-style: $list-style;
+      float: $float-l;
+      text-align: $center;
+      @include color(#FFF);
+    }
+  }
+}
+
+.footer {
+  text-align: $center;
+
+  span {
+    display: $block;
+    @include width(400px,10px);
+    @include container(#ff0000,auto);
+    position: relative;
+
+    b {
+      float: $float-R;
+      @include border(top,26px,solid,transparent);
+      @include border(left,57px,solid,red);
+      @include border(bottom,0px,solid,transparent);
+      position: absolute;
+      bottom: 0;
+      right: -22px;
+    }
+  }
+}
